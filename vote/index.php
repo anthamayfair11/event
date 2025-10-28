@@ -203,6 +203,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>落書き投票</title>
+
+    <!-- OGP -->
+    <meta property="og:title" content="落書き投票｜イベント情報">
+    <meta property="og:description" content="当日の落書き内容を投票で決めよう！あなたの1票が反映されます。毎日3回まで投票可能です。">
+    <meta property="og:image" content="https://xxopfrlp.com/event/assets/images/og-image.png">
+    <meta property="og:url" content="https://xxopfrlp.com/event/vote/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="イベント情報">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="落書き投票｜イベント情報">
+    <meta name="twitter:description" content="当日の落書き内容を投票で決めよう！あなたの1票が反映されます。毎日3回まで投票可能です。">
+    <meta name="twitter:image" content="https://xxopfrlp.com/event/assets/images/og-image.png">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/common.css">

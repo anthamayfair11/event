@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>よくある質問｜イベントQ&A</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .search-box {
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+    .tab-icon {
+      margin-right: 0.5rem;
+    }
+    .no-results {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: #6c757d;
+    }
+    .search-highlight {
+      background-color: #fff3cd;
+      padding: 0 0.2rem;
+    }
+    .countdown-timer {
+      border-radius: 15px;
+      overflow: hidden;
+    }
+    .countdown-item {
+      text-align: center;
+      min-width: 60px;
+    }
+    .countdown-number {
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+    }
+    .countdown-label {
+      font-size: 0.75rem;
+      color: #6c757d;
+      font-weight: 500;
+      margin-top: 0.25rem;
+    }
+    .participation-status {
+      border-radius: 15px;
+      overflow: hidden;
+    }
+    .participation-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    @media (max-width: 576px) {
+      .countdown-number {
+        font-size: 1.75rem;
+      }
+      .countdown-item {
+        min-width: 50px;
+      }
+      .participation-number {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body class="bg-light">
+
+  <!-- ナビゲーション -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4">
+    <div class="container">
+      <span class="navbar-brand mb-0 h1">イベント情報</span>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="../requirements/">📋 募集要項</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="../QA/">❓ よくある質問</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../vote/">🗳️ 投票</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container py-5">
+    <!-- カウントダウンタイマー -->
+    <div class="countdown-timer card shadow-sm mb-4">
+      <div class="card-body p-3">
+        <div class="text-center">
+          <div class="small text-muted mb-2">
+            <i class="bi bi-clock"></i> イベントまで
+          </div>
+          <div id="countdown" class="d-flex justify-content-center gap-2 flex-wrap">
+            <div class="countdown-item">
+              <div class="countdown-number" id="days">--</div>
+              <div class="countdown-label">日</div>
+            </div>
+            <div class="countdown-item">
+              <div class="countdown-number" id="hours">--</div>
+              <div class="countdown-label">時間</div>
+            </div>
+            <div class="countdown-item">
+              <div class="countdown-number" id="minutes">--</div>
+              <div class="countdown-label">分</div>
+            </div>
+            <div class="countdown-item">
+              <div class="countdown-number" id="seconds">--</div>
+              <div class="countdown-label">秒</div>
+            </div>
+          </div>
+          <div id="event-status" class="mt-2 small text-muted" style="display: none;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 参加申込状況 -->
+    <div class="participation-status card shadow-sm mb-4">
+      <div class="card-body p-3">
+        <div class="text-center mb-2">
+          <div class="small text-muted mb-2">
+            <i class="bi bi-people-fill"></i> 現在の参加予定者
+          </div>
+          <div class="d-flex justify-content-center align-items-baseline gap-2">
+            <span class="participation-number" id="current-participants">4</span>
+            <span class="text-muted small">/ 目標 <span id="target-participants">20</span>名</span>
+          </div>
+        </div>
+        <div class="progress" style="height: 20px; border-radius: 10px;">
+          <div class="progress-bar progress-bar-striped progress-bar-animated"
+               role="progressbar"
+               id="participation-progress"
+               style="width: 20%; background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);"
+               aria-valuenow="20"
+               aria-valuemin="0"
+               aria-valuemax="100">
+            <strong>20%</strong>
+          </div>
+        </div>
+        <div class="text-center mt-2">
+          <small class="text-muted">
+            <i class="bi bi-info-circle"></i> あと16名で目標達成！
+          </small>
+        </div>
+      </div>
+    </div>
+
+    <h1 class="text-center mb-4">よくある質問</h1>
+
+    <!-- 検索ボックス -->
+    <div class="search-box">
+      <div class="input-group">
+        <span class="input-group-text">🔍</span>
+        <input
+          type="text"
+          class="form-control"
+          id="searchInput"
+          placeholder="キーワードで検索..."
+          autocomplete="off"
+        >
+        <button class="btn btn-outline-secondary" type="button" id="clearSearch">クリア</button>
+      </div>
+    </div>
+
+    <!-- タブナビゲーション -->
+    <ul class="nav nav-tabs mb-3" id="categoryTabs" role="tablist">
+      <!-- タブはJavaScriptで動的に生成されます -->
+    </ul>
+
+    <!-- タブコンテンツ -->
+    <div class="tab-content" id="categoryTabContent">
+      <!-- コンテンツはJavaScriptで動的に生成されます -->
+    </div>
+
+    <footer class="text-center mt-5 text-muted small">
+      © 2025 イベント運営事務局
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // カウントダウンタイマー
+    (function() {
+      // イベント開催日時: 2025年11月15日（土）13:00
+      const eventDate = new Date('2025-11-15T13:00:00').getTime();
+
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = eventDate - now;
+
+        // 時間計算
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // DOM更新
+        document.getElementById('days').textContent = days;
+        document.getElementById('hours').textContent = hours;
+        document.getElementById('minutes').textContent = minutes;
+        document.getElementById('seconds').textContent = seconds;
+
+        // イベント終了後の処理
+        if (distance < 0) {
+          clearInterval(countdownInterval);
+          document.getElementById('countdown').style.display = 'none';
+          document.getElementById('event-status').style.display = 'block';
+          document.getElementById('event-status').innerHTML = '<strong>🎉 イベント開催中または終了しました</strong>';
+        }
+      }
+
+      // 初回実行
+      updateCountdown();
+
+      // 1秒ごとに更新
+      const countdownInterval = setInterval(updateCountdown, 1000);
+    })();
+
+    // 参加申込状況の更新
+    (function() {
+      // ここで参加者数を設定（管理者が手動で変更）
+      const currentParticipants = 4;
+      const targetParticipants = 20;
+
+      function updateParticipationStatus() {
+        // パーセンテージ計算
+        const percentage = Math.round((currentParticipants / targetParticipants) * 100);
+        const remaining = targetParticipants - currentParticipants;
+
+        // DOM更新
+        document.getElementById('current-participants').textContent = currentParticipants;
+        document.getElementById('target-participants').textContent = targetParticipants;
+
+        const progressBar = document.getElementById('participation-progress');
+        progressBar.style.width = percentage + '%';
+        progressBar.textContent = percentage + '%';
+        progressBar.setAttribute('aria-valuenow', percentage);
+
+        // メッセージ更新
+        const statusMessage = document.querySelector('.participation-status .text-center.mt-2 small');
+        if (currentParticipants >= targetParticipants) {
+          statusMessage.innerHTML = '<i class="bi bi-check-circle-fill text-success"></i> 目標達成！ありがとうございます';
+          progressBar.classList.remove('progress-bar-animated');
+          progressBar.style.background = 'linear-gradient(90deg, #48bb78 0%, #38a169 100%)';
+        } else {
+          statusMessage.innerHTML = '<i class="bi bi-info-circle"></i> あと' + remaining + '名で目標達成！';
+        }
+      }
+
+      // 初回実行
+      updateParticipationStatus();
+    })();
+  </script>
+  <script>
+    let allData = null;
+    let currentTabInstance = null;
+
+    // JSONファイルからQ&Aデータを読み込んで表示
+    async function loadFAQs() {
+      try {
+        const response = await fetch('faqs.json');
+        if (!response.ok) throw new Error('JSONファイルの読み込みに失敗しました');
+
+        allData = await response.json();
+
+        // タブとコンテンツを生成
+        renderTabs();
+        renderAllCategories();
+
+        // 最初のタブをアクティブにする
+        const firstTab = document.querySelector('#categoryTabs .nav-link');
+        if (firstTab) {
+          const tab = new bootstrap.Tab(firstTab);
+          tab.show();
+        }
+
+      } catch (error) {
+        console.error('エラー:', error);
+        const container = document.getElementById('categoryTabContent');
+        const errorMsg = document.createElement('div');
+        errorMsg.className = 'alert alert-danger';
+        errorMsg.textContent = 'Q&Aデータの読み込みに失敗しました。';
+        container.appendChild(errorMsg);
+      }
+    }
+
+    // タブを生成
+    function renderTabs() {
+      const tabsContainer = document.getElementById('categoryTabs');
+      tabsContainer.innerHTML = '';
+
+      allData.categories.forEach((category, index) => {
+        const li = document.createElement('li');
+        li.className = 'nav-item';
+        li.setAttribute('role', 'presentation');
+
+        const button = document.createElement('button');
+        button.className = index === 0 ? 'nav-link active' : 'nav-link';
+        button.id = `${category.id}-tab`;
+        button.setAttribute('data-bs-toggle', 'tab');
+        button.setAttribute('data-bs-target', `#${category.id}`);
+        button.setAttribute('type', 'button');
+        button.setAttribute('role', 'tab');
+        button.setAttribute('aria-controls', category.id);
+        button.setAttribute('aria-selected', index === 0 ? 'true' : 'false');
+
+        // アイコンとカテゴリ名を追加（XSS対策: textContentを分けて使用）
+        const iconSpan = document.createElement('span');
+        iconSpan.className = 'tab-icon';
+        iconSpan.textContent = category.icon;
+
+        const nameText = document.createTextNode(category.name);
+
+        button.appendChild(iconSpan);
+        button.appendChild(nameText);
+
+        li.appendChild(button);
+        tabsContainer.appendChild(li);
+      });
+    }
+
+    // すべてのカテゴリのコンテンツを生成
+    function renderAllCategories() {
+      const container = document.getElementById('categoryTabContent');
+      container.innerHTML = '';
+
+      allData.categories.forEach((category, index) => {
+        const tabPane = document.createElement('div');
+        tabPane.className = index === 0 ? 'tab-pane fade show active' : 'tab-pane fade';
+        tabPane.id = category.id;
+        tabPane.setAttribute('role', 'tabpanel');
+        tabPane.setAttribute('aria-labelledby', `${category.id}-tab`);
+
+        const accordion = createAccordion(category.faqs, category.id);
+        tabPane.appendChild(accordion);
+        container.appendChild(tabPane);
+      });
+    }
+
+    // アコーディオンを生成
+    function createAccordion(faqs, categoryId) {
+      const accordion = document.createElement('div');
+      accordion.className = 'accordion';
+      accordion.id = `accordion-${categoryId}`;
+
+      faqs.forEach(faq => {
+        const item = createAccordionItem(faq, categoryId);
+        accordion.appendChild(item);
+      });
+
+      return accordion;
+    }
+
+    // アコーディオンアイテムを生成
+    function createAccordionItem(faq, parentId) {
+      const item = document.createElement('div');
+      item.className = 'accordion-item';
+      item.setAttribute('data-faq-id', faq.id);
+      item.setAttribute('data-question', faq.question.toLowerCase());
+      item.setAttribute('data-answer', faq.answer.toLowerCase());
+
+      // ヘッダー部分
+      const header = document.createElement('h2');
+      header.className = 'accordion-header';
+      header.id = `heading-${parentId}-${faq.id}`;
+
+      const button = document.createElement('button');
+      button.className = faq.defaultOpen ? 'accordion-button' : 'accordion-button collapsed';
+      button.type = 'button';
+      button.setAttribute('data-bs-toggle', 'collapse');
+      button.setAttribute('data-bs-target', `#collapse-${parentId}-${faq.id}`);
+      button.setAttribute('aria-expanded', faq.defaultOpen ? 'true' : 'false');
+      button.setAttribute('aria-controls', `collapse-${parentId}-${faq.id}`);
+      // XSS対策: textContentを使用
+      button.textContent = `Q. ${faq.question}`;
+
+      header.appendChild(button);
+
+      // コンテンツ部分
+      const collapseDiv = document.createElement('div');
+      collapseDiv.id = `collapse-${parentId}-${faq.id}`;
+      collapseDiv.className = faq.defaultOpen ? 'accordion-collapse collapse show' : 'accordion-collapse collapse';
+      collapseDiv.setAttribute('aria-labelledby', `heading-${parentId}-${faq.id}`);
+      collapseDiv.setAttribute('data-bs-parent', `#accordion-${parentId}`);
+
+      const body = document.createElement('div');
+      body.className = 'accordion-body';
+      // XSS対策: textContentを使用
+      body.textContent = `A. ${faq.answer}`;
+
+      collapseDiv.appendChild(body);
+
+      // 全体を組み立て
+      item.appendChild(header);
+      item.appendChild(collapseDiv);
+
+      return item;
+    }
+
+    // 検索機能
+    function handleSearch() {
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+
+      if (!searchTerm) {
+        // 検索語が空の場合は通常表示に戻す
+        renderAllCategories();
+        return;
+      }
+
+      // 全カテゴリから該当する質問を抽出
+      const searchResults = [];
+      allData.categories.forEach(category => {
+        category.faqs.forEach(faq => {
+          if (faq.question.toLowerCase().includes(searchTerm) ||
+              faq.answer.toLowerCase().includes(searchTerm)) {
+            searchResults.push({
+              ...faq,
+              categoryName: category.name,
+              categoryIcon: category.icon
+            });
+          }
+        });
+      });
+
+      // 検索結果を表示
+      displaySearchResults(searchResults, searchTerm);
+    }
+
+    // 検索結果を表示
+    function displaySearchResults(results, searchTerm) {
+      const container = document.getElementById('categoryTabContent');
+      container.innerHTML = '';
+
+      const resultPane = document.createElement('div');
+      resultPane.className = 'tab-pane fade show active';
+
+      if (results.length === 0) {
+        const noResults = document.createElement('div');
+        noResults.className = 'no-results';
+        noResults.innerHTML = `
+          <p class="h5">「${escapeHtml(searchTerm)}」に一致する質問が見つかりませんでした</p>
+          <p class="text-muted mt-3">別のキーワードで検索してみてください</p>
+        `;
+        resultPane.appendChild(noResults);
+      } else {
+        const resultHeader = document.createElement('div');
+        resultHeader.className = 'alert alert-info mb-3';
+        resultHeader.textContent = `検索結果: ${results.length}件の質問が見つかりました`;
+        resultPane.appendChild(resultHeader);
+
+        const accordion = document.createElement('div');
+        accordion.className = 'accordion';
+        accordion.id = 'accordion-search';
+
+        results.forEach(faq => {
+          const item = createAccordionItem(faq, 'search');
+
+          // カテゴリバッジを追加
+          const badge = document.createElement('span');
+          badge.className = 'badge bg-secondary ms-2';
+          badge.textContent = `${faq.categoryIcon} ${faq.categoryName}`;
+
+          const button = item.querySelector('.accordion-button');
+          button.appendChild(badge);
+
+          accordion.appendChild(item);
+        });
+
+        resultPane.appendChild(accordion);
+      }
+
+      container.appendChild(resultPane);
+
+      // タブをすべて非アクティブにする
+      document.querySelectorAll('#categoryTabs .nav-link').forEach(tab => {
+        tab.classList.remove('active');
+        tab.setAttribute('aria-selected', 'false');
+      });
+    }
+
+    // HTML エスケープ関数
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // 検索クリア
+    function clearSearch() {
+      document.getElementById('searchInput').value = '';
+      renderAllCategories();
+
+      // 最初のタブをアクティブにする
+      const firstTab = document.querySelector('#categoryTabs .nav-link');
+      if (firstTab) {
+        firstTab.classList.add('active');
+        firstTab.setAttribute('aria-selected', 'true');
+        const tab = new bootstrap.Tab(firstTab);
+        tab.show();
+      }
+    }
+
+    // イベントリスナー設定
+    document.addEventListener('DOMContentLoaded', () => {
+      loadFAQs();
+
+      // 検索ボックスのイベント
+      const searchInput = document.getElementById('searchInput');
+      searchInput.addEventListener('input', handleSearch);
+
+      // クリアボタン
+      document.getElementById('clearSearch').addEventListener('click', clearSearch);
+
+      // Enterキーで検索
+      searchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          handleSearch();
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>募集要項｜ザーメン便器志願の女装娘ちゃんに精子を大量ぶっかけする会</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .countdown-timer {
+      border-radius: 15px;
+      overflow: hidden;
+    }
+    .countdown-item {
+      text-align: center;
+      min-width: 60px;
+    }
+    .countdown-number {
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+    }
+    .countdown-label {
+      font-size: 0.75rem;
+      color: #6c757d;
+      font-weight: 500;
+      margin-top: 0.25rem;
+    }
+    .participation-status {
+      border-radius: 15px;
+      overflow: hidden;
+    }
+    .participation-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    @media (max-width: 576px) {
+      .countdown-number {
+        font-size: 1.75rem;
+      }
+      .countdown-item {
+        min-width: 50px;
+      }
+      .participation-number {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body class="bg-light">
+
+  <!-- ナビゲーション -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4">
+    <div class="container">
+      <span class="navbar-brand mb-0 h1">イベント情報</span>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="../requirements/">📋 募集要項</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../QA/">❓ よくある質問</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../vote/">🗳️ 投票</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ヘッダー -->
+  <div class="bg-primary text-white py-4 mb-4">
+    <div class="container">
+      <h1 class="h3 fw-bold mb-3">ザーメン便器志願の女装娘ちゃんに精子を大量ぶっかけする会</h1>
+      <p class="mb-3">参加者募集中！</p>
+
+      <!-- カウントダウンタイマー -->
+      <div class="countdown-timer card bg-white text-dark shadow-sm mb-3">
+        <div class="card-body p-3">
+          <div class="text-center">
+            <div class="small text-muted mb-2">
+              <i class="bi bi-clock"></i> イベントまで
+            </div>
+            <div id="countdown" class="d-flex justify-content-center gap-2 flex-wrap">
+              <div class="countdown-item">
+                <div class="countdown-number" id="days">--</div>
+                <div class="countdown-label">日</div>
+              </div>
+              <div class="countdown-item">
+                <div class="countdown-number" id="hours">--</div>
+                <div class="countdown-label">時間</div>
+              </div>
+              <div class="countdown-item">
+                <div class="countdown-number" id="minutes">--</div>
+                <div class="countdown-label">分</div>
+              </div>
+              <div class="countdown-item">
+                <div class="countdown-number" id="seconds">--</div>
+                <div class="countdown-label">秒</div>
+              </div>
+            </div>
+            <div id="event-status" class="mt-2 small text-muted" style="display: none;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 参加申込状況 -->
+      <div class="participation-status card bg-white text-dark shadow-sm mb-3">
+        <div class="card-body p-3">
+          <div class="text-center mb-2">
+            <div class="small text-muted mb-2">
+              <i class="bi bi-people-fill"></i> 現在の参加予定者
+            </div>
+            <div class="d-flex justify-content-center align-items-baseline gap-2">
+              <span class="participation-number" id="current-participants">4</span>
+              <span class="text-muted small">/ 目標 <span id="target-participants">20</span>名</span>
+            </div>
+          </div>
+          <div class="progress" style="height: 20px; border-radius: 10px;">
+            <div class="progress-bar progress-bar-striped progress-bar-animated"
+                 role="progressbar"
+                 id="participation-progress"
+                 style="width: 20%; background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);"
+                 aria-valuenow="20"
+                 aria-valuemin="0"
+                 aria-valuemax="100">
+              <strong>20%</strong>
+            </div>
+          </div>
+          <div class="text-center mt-2">
+            <small class="text-muted">
+              <i class="bi bi-info-circle"></i> あと16名で目標達成！
+            </small>
+          </div>
+        </div>
+      </div>
+      <div class="d-grid gap-2">
+        <a href="mailto:ayuhou10@gmail.com?subject=イベント参加申込&body=参加を希望します。%0D%0A%0D%0A【お名前】%0D%0A%0D%0A【ご連絡先】%0D%0A" class="btn btn-light btn-lg">
+          📧 メールで申し込む
+        </a>
+        <a href="https://x.com/phimosisayu" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light btn-lg">
+          ✉️ X DMで申し込む
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container pb-5 mb-5">
+
+    <!-- 重要情報 -->
+    <div class="card border-primary border-2 shadow-sm mb-4">
+      <div class="card-body p-4">
+
+        <div class="mb-3 pb-3 border-bottom">
+          <div class="d-flex align-items-start">
+            <div class="fs-3 me-3">🗓</div>
+            <div>
+              <div class="text-secondary small fw-bold mb-1">開催日時</div>
+              <div class="fs-6">2025年11月15日（土）<br>13:00〜17:00</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3 pb-3 border-bottom">
+          <div class="d-flex align-items-start">
+            <div class="fs-3 me-3">📍</div>
+            <div>
+              <div class="text-secondary small fw-bold mb-1">会場</div>
+              <div class="fs-6">
+                新宿駅・新宿三丁目駅から徒歩数分<br>
+                <small class="text-muted">※詳細は申込後に個別にお知らせします</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="d-flex align-items-start">
+            <div class="fs-3 me-3">💴</div>
+            <div>
+              <div class="text-secondary small fw-bold mb-1">参加費</div>
+              <div class="fs-6">
+                お一人 4,000円（目安）<br>
+                <small class="text-muted">※会場代割り勘・参加人数によりお安くなります</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- イベント概要 -->
+    <div class="card shadow-sm mb-3">
+      <div class="card-header bg-white py-3">
+        <h2 class="h5 mb-0 fw-bold">
+          <span class="me-2">📋</span>イベント概要
+        </h2>
+      </div>
+      <div class="card-body">
+        <div class="row mb-2">
+          <div class="col-4 fw-bold text-secondary">主催者</div>
+          <div class="col-8">あゆ</div>
+        </div>
+        <div class="row">
+          <div class="col-4 fw-bold text-secondary">コンセプト</div>
+          <div class="col-8">イベントタイトルのとおりです</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 募集対象・定員 -->
+    <div class="card shadow-sm mb-3">
+      <div class="card-header bg-white py-3">
+        <h2 class="h5 mb-0 fw-bold">
+          <span class="me-2">🧑‍🤝‍🧑</span>募集対象・定員
+        </h2>
+      </div>
+      <div class="card-body">
+        <div class="row mb-2">
+          <div class="col-4 fw-bold text-secondary">対象者</div>
+          <div class="col-8">
+            <span class="badge bg-warning text-dark mb-1">成人のみ</span><br>
+            初めての方も大歓迎です
+          </div>
+        </div>
+        <div class="row mb-2">
+          <div class="col-4 fw-bold text-secondary">定員</div>
+          <div class="col-8">定員なし</div>
+        </div>
+        <div class="row">
+          <div class="col-4 fw-bold text-secondary">申込締切</div>
+          <div class="col-8">2025年11月14日（金）まで</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 参加費・支払い -->
+    <div class="card shadow-sm mb-3">
+      <div class="card-header bg-white py-3">
+        <h2 class="h5 mb-0 fw-bold">
+          <span class="me-2">💰</span>参加費・支払い方法
+        </h2>
+      </div>
+      <div class="card-body">
+        <div class="row mb-2">
+          <div class="col-4 fw-bold text-secondary">参加費</div>
+          <div class="col-8">
+            4,000円（目安・税込）<br>
+            <small class="text-muted">会場代を参加人数で割り勘します。人数が多ければ安くなります。</small>
+          </div>
+        </div>
+        <div class="row mb-2">
+          <div class="col-4 fw-bold text-secondary">支払い方法</div>
+          <div class="col-8">当日、現金手渡し</div>
+        </div>
+        <div class="row mb-2">
+          <div class="col-4 fw-bold text-secondary">キャンセル</div>
+          <div class="col-8">可能です（なるべくお控えください）</div>
+        </div>
+        <div class="row">
+          <div class="col-4 fw-bold text-secondary">途中参加</div>
+          <div class="col-8">OK</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 持ち物・服装 -->
+    <div class="card shadow-sm mb-3">
+      <div class="card-header bg-white py-3">
+        <h2 class="h5 mb-0 fw-bold">
+          <span class="me-2">🎒</span>持ち物・服装
+        </h2>
+      </div>
+      <div class="card-body">
+        <div class="row mb-2">
+          <div class="col-4 fw-bold text-secondary">持ち物</div>
+          <div class="col-8">お飲み物と性欲</div>
+        </div>
+        <div class="row mb-2">
+          <div class="col-4 fw-bold text-secondary">服装</div>
+          <div class="col-8">指定なし（自由）</div>
+        </div>
+        <div class="row mb-2">
+          <div class="col-4 fw-bold text-secondary">飲食物持込</div>
+          <div class="col-8">可能</div>
+        </div>
+        <div class="row">
+          <div class="col-4 fw-bold text-secondary">更衣室</div>
+          <div class="col-8">あり</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 申込方法・問い合わせ -->
+    <div class="card shadow-sm mb-3" id="apply-section">
+      <div class="card-header bg-white py-3">
+        <h2 class="h5 mb-0 fw-bold">
+          <span class="me-2">📧</span>申込方法・問い合わせ
+        </h2>
+      </div>
+      <div class="card-body">
+        <div class="row mb-2">
+          <div class="col-4 fw-bold text-secondary">申込方法</div>
+          <div class="col-8">
+            以下のいずれかの方法でお申し込みください<br>
+            <strong>メール:</strong> ayuhou10@gmail.com<br>
+            <strong>X:</strong> @phimosisayu
+          </div>
+        </div>
+        <div class="row mb-2">
+          <div class="col-4 fw-bold text-secondary">申込手順</div>
+          <div class="col-8">
+            1. 上記連絡先に参加希望の旨をご連絡<br>
+            2. 確認のご返信をお待ちください<br>
+            3. 詳細情報をお送りします
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4 fw-bold text-secondary">緊急連絡先</div>
+          <div class="col-8">当日の緊急連絡も上記と同じ</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 注意事項 -->
+    <div class="card shadow-sm mb-3">
+      <div class="card-header bg-white py-3">
+        <h2 class="h5 mb-0 fw-bold">
+          <span class="me-2">⚠️</span>注意事項
+        </h2>
+      </div>
+      <div class="card-body">
+        <ul class="mb-0">
+          <li class="mb-2">イベントの撮影はNGです。自撮りはOKですが、他の参加者の方が写り込まないようご注意ください。</li>
+          <li class="mb-2">体調不良や持病をお持ちの方は、無理せずご参加ください。</li>
+          <li class="mb-2">参加は自己責任となります。イベント中の事故や怪我について、主催者は責任を負いかねます。</li>
+          <li class="mb-2">他の参加者への配慮をお願いいたします。迷惑行為があった場合は退出いただく場合があります。</li>
+          <li class="mb-0">天候やその他の事情により、イベントが中止または変更になる場合があります。その際は事前にご連絡いたします。</li>
+          <li class="mb-0">募集してるのは、ザーメンをぶっかけてくれる方です。ぶっかけられたい方はごめんなさい。</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 固定フッター -->
+  <div class="fixed-bottom bg-white border-top py-3 shadow">
+    <div class="container">
+      <div class="row g-2">
+        <div class="col-6">
+          <a href="mailto:ayuhou10@gmail.com?subject=イベント参加申込&body=参加を希望します。%0D%0A%0D%0A【お名前】%0D%0A%0D%0A【ご連絡先】%0D%0A" class="btn btn-primary btn-lg w-100">
+            📧 メール
+          </a>
+        </div>
+        <div class="col-6">
+          <a href="https://x.com/phimosisayu" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg w-100">
+            ✉️ X DM
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // カウントダウンタイマー
+    (function() {
+      // イベント開催日時: 2025年11月15日（土）13:00
+      const eventDate = new Date('2025-11-15T13:00:00').getTime();
+
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = eventDate - now;
+
+        // 時間計算
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // DOM更新
+        document.getElementById('days').textContent = days;
+        document.getElementById('hours').textContent = hours;
+        document.getElementById('minutes').textContent = minutes;
+        document.getElementById('seconds').textContent = seconds;
+
+        // イベント終了後の処理
+        if (distance < 0) {
+          clearInterval(countdownInterval);
+          document.getElementById('countdown').style.display = 'none';
+          document.getElementById('event-status').style.display = 'block';
+          document.getElementById('event-status').innerHTML = '<strong>🎉 イベント開催中または終了しました</strong>';
+        }
+      }
+
+      // 初回実行
+      updateCountdown();
+
+      // 1秒ごとに更新
+      const countdownInterval = setInterval(updateCountdown, 1000);
+    })();
+
+    // 参加申込状況の更新
+    (function() {
+      // ここで参加者数を設定（管理者が手動で変更）
+      const currentParticipants = 4;
+      const targetParticipants = 20;
+
+      function updateParticipationStatus() {
+        // パーセンテージ計算
+        const percentage = Math.round((currentParticipants / targetParticipants) * 100);
+        const remaining = targetParticipants - currentParticipants;
+
+        // DOM更新
+        document.getElementById('current-participants').textContent = currentParticipants;
+        document.getElementById('target-participants').textContent = targetParticipants;
+
+        const progressBar = document.getElementById('participation-progress');
+        progressBar.style.width = percentage + '%';
+        progressBar.textContent = percentage + '%';
+        progressBar.setAttribute('aria-valuenow', percentage);
+
+        // メッセージ更新
+        const statusMessage = document.querySelector('.participation-status .text-center.mt-2 small');
+        if (currentParticipants >= targetParticipants) {
+          statusMessage.innerHTML = '<i class="bi bi-check-circle-fill text-success"></i> 目標達成！ありがとうございます';
+          progressBar.classList.remove('progress-bar-animated');
+          progressBar.style.background = 'linear-gradient(90deg, #48bb78 0%, #38a169 100%)';
+        } else {
+          statusMessage.innerHTML = '<i class="bi bi-info-circle"></i> あと' + remaining + '名で目標達成！';
+        }
+      }
+
+      // 初回実行
+      updateParticipationStatus();
+    })();
+  </script>
+</body>
+</html>

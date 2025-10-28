@@ -226,7 +226,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <a class="nav-link" href="../QA/">❓ よくある質問</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="../vote/">🗳️ 落書き投票</a>
+                        <a class="nav-link active" href="../vote/">🗳️ 投票</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../question/">💬 質問掲示板</a>
                     </li>
                 </ul>
             </div>

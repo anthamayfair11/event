@@ -94,8 +94,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- OGP -->
     <meta property="og:title" content="質問掲示板｜イベント情報">
     <meta property="og:description" content="匿名で質問できる掲示板。初めての方も気軽にご質問ください。主催者が丁寧に回答します。">
-    <meta property="og:image" content="https://xxopfrlp.com/event/assets/images/og-image.png">
-    <meta property="og:url" content="https://xxopfrlp.com/event/question/">
+    <meta property="og:image" content="https://shinseihoukei.com/event/assets/images/og-image.png">
+    <meta property="og:url" content="https://shinseihoukei.com/event/question/">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="イベント情報">
 
@@ -103,7 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="質問掲示板｜イベント情報">
     <meta name="twitter:description" content="匿名で質問できる掲示板。初めての方も気軽にご質問ください。主催者が丁寧に回答します。">
-    <meta name="twitter:image" content="https://xxopfrlp.com/event/assets/images/og-image.png">
+    <meta name="twitter:image" content="https://shinseihoukei.com/event/assets/images/og-image.png">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/common.css">

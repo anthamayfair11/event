@@ -1,3 +1,8 @@
+<?php
+require_once __DIR__ . '/../config/event_settings.php';
+$percentage = round(($current_participants / $target_participants) * 100);
+$remaining = $target_participants - $current_participants;
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -95,24 +100,24 @@
               <i class="bi bi-people-fill"></i> 現在の参加予定者
             </div>
             <div class="d-flex justify-content-center align-items-baseline gap-2">
-              <span class="participation-number" id="current-participants">4</span>
-              <span class="text-muted small">/ 目標 <span id="target-participants">20</span>名</span>
+              <span class="participation-number" id="current-participants"><?php echo $current_participants; ?></span>
+              <span class="text-muted small">/ 目標 <span id="target-participants"><?php echo $target_participants; ?></span>名</span>
             </div>
           </div>
           <div class="progress" style="height: 20px; border-radius: 10px;">
             <div class="progress-bar progress-bar-striped progress-bar-animated"
                  role="progressbar"
                  id="participation-progress"
-                 style="width: 20%; background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);"
-                 aria-valuenow="20"
+                 style="width: <?php echo $percentage; ?>%; background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);"
+                 aria-valuenow="<?php echo $percentage; ?>"
                  aria-valuemin="0"
                  aria-valuemax="100">
-              <strong>20%</strong>
+              <strong><?php echo $percentage; ?>%</strong>
             </div>
           </div>
           <div class="text-center mt-2">
             <small class="text-muted">
-              <i class="bi bi-info-circle"></i> あと16名で目標達成！
+              <i class="bi bi-info-circle"></i> あと<?php echo $remaining; ?>名で目標達成！
             </small>
           </div>
         </div>

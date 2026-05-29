@@ -1,0 +1,158 @@
+<?php
+require_once __DIR__ . '/../config/event_settings.php';
+$percentage = round(($current_participants / $target_participants) * 100);
+$remaining = $target_participants - $current_participants;
+?>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>よくある質問｜イベントQ&A</title>
+
+  <!-- OGP -->
+  <meta property="og:title" content="よくある質問｜イベントQ&A">
+  <meta property="og:description" content="参加について、会場について、イベント内容についてなど、よくある質問にお答えします。初めての方もご安心ください。">
+  <meta property="og:image" content="https://shinseihoukei.com/event/assets/images/og-image.png?v=2">
+  <meta property="og:url" content="https://shinseihoukei.com/event/QA/?v=2">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="イベント情報">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="よくある質問｜イベントQ&A">
+  <meta name="twitter:description" content="参加について、会場について、イベント内容についてなど、よくある質問にお答えします。初めての方もご安心ください。">
+  <meta name="twitter:image" content="https://shinseihoukei.com/event/assets/images/og-image.png?v=2">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/common.css?v=<?php echo filemtime(__DIR__ . '/../assets/css/common.css'); ?>">
+  <link rel="stylesheet" href="../assets/css/qa.css?v=<?php echo filemtime(__DIR__ . '/../assets/css/qa.css'); ?>">
+</head>
+<body class="bg-light">
+
+  <!-- ナビゲーション -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4">
+    <div class="container">
+      <span class="navbar-brand mb-0 h1">イベント情報</span>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="../requirements/">📋 募集要項</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="../QA/">❓ よくある質問</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../vote/">🗳️ 投票</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../question/">💬 質問掲示板</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container py-5">
+    <!-- カウントダウンタイマー -->
+    <div class="countdown-timer card shadow-sm mb-4">
+      <div class="card-body p-3">
+        <div class="text-center">
+          <div class="small text-muted mb-2">
+            <i class="bi bi-clock"></i> イベントまで
+          </div>
+          <div id="countdown" class="d-flex justify-content-center gap-2 flex-wrap">
+            <div class="countdown-item">
+              <div class="countdown-number" id="days">--</div>
+              <div class="countdown-label">日</div>
+            </div>
+            <div class="countdown-item">
+              <div class="countdown-number" id="hours">--</div>
+              <div class="countdown-label">時間</div>
+            </div>
+            <div class="countdown-item">
+              <div class="countdown-number" id="minutes">--</div>
+              <div class="countdown-label">分</div>
+            </div>
+            <div class="countdown-item">
+              <div class="countdown-number" id="seconds">--</div>
+              <div class="countdown-label">秒</div>
+            </div>
+          </div>
+          <div id="event-status" class="mt-2 small text-muted" style="display: none;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 参加申込状況 -->
+    <div class="participation-status card shadow-sm mb-4">
+      <div class="card-body p-3">
+        <div class="text-center mb-2">
+          <div class="small text-muted mb-2">
+            <i class="bi bi-people-fill"></i> 現在の参加予定者
+          </div>
+          <div class="d-flex justify-content-center align-items-baseline gap-2">
+            <span class="participation-number" id="current-participants"><?php echo $current_participants; ?></span>
+            <span class="text-muted small">/ 目標 <span id="target-participants"><?php echo $target_participants; ?></span>名</span>
+          </div>
+        </div>
+        <div class="progress" style="height: 20px; border-radius: 10px;">
+          <div class="progress-bar progress-bar-striped progress-bar-animated"
+               role="progressbar"
+               id="participation-progress"
+               style="width: <?php echo $percentage; ?>%; background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);"
+               aria-valuenow="<?php echo $percentage; ?>"
+               aria-valuemin="0"
+               aria-valuemax="100">
+            <strong><?php echo $percentage; ?>%</strong>
+          </div>
+        </div>
+        <div class="text-center mt-2">
+          <small class="text-muted">
+            <i class="bi bi-info-circle"></i> あと<?php echo $remaining; ?>名で目標達成！
+          </small>
+        </div>
+      </div>
+    </div>
+
+    <h1 class="text-center mb-4">よくある質問</h1>
+
+    <!-- 検索ボックス -->
+    <div class="search-box">
+      <div class="input-group">
+        <span class="input-group-text">🔍</span>
+        <input
+          type="text"
+          class="form-control"
+          id="searchInput"
+          placeholder="キーワードで検索..."
+          autocomplete="off"
+        >
+        <button class="btn btn-outline-secondary" type="button" id="clearSearch">クリア</button>
+      </div>
+    </div>
+
+    <!-- タブナビゲーション -->
+    <ul class="nav nav-tabs mb-3" id="categoryTabs" role="tablist">
+      <!-- タブはJavaScriptで動的に生成されます -->
+    </ul>
+
+    <!-- タブコンテンツ -->
+    <div class="tab-content" id="categoryTabContent">
+      <!-- コンテンツはJavaScriptで動的に生成されます -->
+    </div>
+
+    <footer class="text-center mt-5 text-muted small">
+      © 2026 イベント運営事務局
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/common.js?v=<?php echo filemtime(__DIR__ . '/../assets/js/common.js'); ?>"></script>
+  <script src="../assets/js/qa.js?v=<?php echo filemtime(__DIR__ . '/../assets/js/qa.js'); ?>"></script>
+</body>
+</html>

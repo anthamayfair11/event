@@ -1,0 +1,419 @@
+<?php
+require_once __DIR__ . '/../config/event_settings.php';
+$percentage = round(($current_participants / $target_participants) * 100);
+$remaining = $target_participants - $current_participants;
+?>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>募集要項｜ザーメン便器志願の女装娘ちゃんに精子を大量ぶっかけする会</title>
+
+  <!-- OGP -->
+  <meta property="og:title" content="ザーメン便器志願の女装娘ちゃんに精子を大量ぶっかけする会｜募集要項">
+  <meta property="og:description" content="2025年11月15日（土）13:00開催！新宿駅から徒歩5分。参加費4,000円（目安）。初めての方も大歓迎です。">
+  <meta property="og:image" content="https://shinseihoukei.com/event/assets/images/og-image.png">
+  <meta property="og:url" content="https://shinseihoukei.com/event/requirements/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="イベント情報">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ザーメン便器志願の女装娘ちゃんに精子を大量ぶっかけする会｜募集要項">
+  <meta name="twitter:description" content="2025年11月15日（土）13:00開催！新宿駅から徒歩5分。参加費4,000円（目安）。初めての方も大歓迎です。">
+  <meta name="twitter:image" content="https://shinseihoukei.com/event/assets/images/og-image.png">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/common.css">
+</head>
+<body class="bg-light">
+
+  <!-- ナビゲーション -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4">
+    <div class="container">
+      <span class="navbar-brand mb-0 h1">イベント情報</span>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="../requirements/">📋 募集要項</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../QA/">❓ よくある質問</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../vote/">🗳️ 投票</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../question/">💬 質問掲示板</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ヘッダー -->
+  <div class="bg-primary text-white py-4 mb-4">
+    <div class="container">
+      <h1 class="h3 fw-bold mb-3">ザーメン便器志願の女装娘ちゃんに精子を大量ぶっかけする会</h1>
+      <p class="mb-3">参加者募集中！</p>
+
+      <!-- カウントダウンタイマー -->
+      <div class="countdown-timer card bg-white text-dark shadow-sm mb-3">
+        <div class="card-body p-3">
+          <div class="text-center">
+            <div class="small text-muted mb-2">
+              <i class="bi bi-clock"></i> イベントまで
+            </div>
+            <div id="countdown" class="d-flex justify-content-center gap-2 flex-wrap">
+              <div class="countdown-item">
+                <div class="countdown-number" id="days">--</div>
+                <div class="countdown-label">日</div>
+              </div>
+              <div class="countdown-item">
+                <div class="countdown-number" id="hours">--</div>
+                <div class="countdown-label">時間</div>
+              </div>
+              <div class="countdown-item">
+                <div class="countdown-number" id="minutes">--</div>
+                <div class="countdown-label">分</div>
+              </div>
+              <div class="countdown-item">
+                <div class="countdown-number" id="seconds">--</div>
+                <div class="countdown-label">秒</div>
+              </div>
+            </div>
+            <div id="event-status" class="mt-2 small text-muted" style="display: none;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 参加申込状況 -->
+      <div class="participation-status card bg-white text-dark shadow-sm mb-3">
+        <div class="card-body p-3">
+          <div class="text-center mb-2">
+            <div class="small text-muted mb-2">
+              <i class="bi bi-people-fill"></i> 現在の参加予定者
+            </div>
+            <div class="d-flex justify-content-center align-items-baseline gap-2">
+              <span class="participation-number" id="current-participants"><?php echo $current_participants; ?></span>
+              <span class="text-muted small">/ 目標 <span id="target-participants"><?php echo $target_participants; ?></span>名</span>
+            </div>
+          </div>
+          <div class="progress" style="height: 20px; border-radius: 10px;">
+            <div class="progress-bar progress-bar-striped progress-bar-animated"
+                 role="progressbar"
+                 id="participation-progress"
+                 style="width: <?php echo $percentage; ?>%; background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);"
+                 aria-valuenow="<?php echo $percentage; ?>"
+                 aria-valuemin="0"
+                 aria-valuemax="100">
+              <strong><?php echo $percentage; ?>%</strong>
+            </div>
+          </div>
+          <div class="text-center mt-2">
+            <small class="text-muted">
+              <i class="bi bi-info-circle"></i> あと<?php echo $remaining; ?>名で目標達成！
+            </small>
+          </div>
+        </div>
+      </div>
+      <div class="d-grid gap-2">
+        <a href="mailto:ayuhou10@gmail.com?subject=イベント参加申込&body=参加を希望します。%0D%0A%0D%0A【お名前】%0D%0A%0D%0A【ご連絡先】%0D%0A" class="btn btn-light btn-lg">
+          📧 メールで申し込む
+        </a>
+        <a href="https://x.com/phimosisayu" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light btn-lg">
+          ✉️ X DMで申し込む
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container pb-5 mb-5">
+
+    <!-- 重要情報 -->
+    <div class="card border-primary border-2 shadow-sm mb-4">
+      <div class="card-body p-4">
+
+        <div class="mb-3 pb-3 border-bottom">
+          <div class="d-flex align-items-start">
+            <div class="fs-3 me-3">🗓</div>
+            <div>
+              <div class="text-secondary small fw-bold mb-1">開催日時</div>
+              <div class="fs-6">2025年11月15日（土）<br>13:00〜17:00</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3 pb-3 border-bottom">
+          <div class="d-flex align-items-start">
+            <div class="fs-3 me-3">📍</div>
+            <div>
+              <div class="text-secondary small fw-bold mb-1">会場</div>
+              <div class="fs-6">
+                新宿駅・新宿三丁目駅から徒歩数分<br>
+                <small class="text-muted">※詳細は申込後に個別にお知らせします</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="d-flex align-items-start">
+            <div class="fs-3 me-3">💴</div>
+            <div>
+              <div class="text-secondary small fw-bold mb-1">参加費</div>
+              <div class="fs-6">
+                お一人 4,000円（目安）<br>
+                <small class="text-muted">※会場代割り勘・参加人数によりお安くなります</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- イベント概要 -->
+    <div class="card shadow-sm mb-3">
+      <div class="card-header bg-white py-3">
+        <h2 class="h5 mb-0 fw-bold">
+          <span class="me-2">📋</span>イベント概要
+        </h2>
+      </div>
+      <div class="card-body">
+        <div class="row mb-2">
+          <div class="col-4 fw-bold text-secondary">主催者</div>
+          <div class="col-8">あゆ</div>
+        </div>
+        <div class="row">
+          <div class="col-4 fw-bold text-secondary">コンセプト</div>
+          <div class="col-8">イベントタイトルのとおりです</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 当日のタイムライン -->
+    <div class="card shadow-sm mb-3">
+      <div class="card-header bg-white py-3">
+        <h2 class="h5 mb-0 fw-bold">
+          <span class="me-2">⏰</span>当日のタイムライン
+        </h2>
+      </div>
+      <div class="card-body">
+        <div class="timeline">
+          <div class="timeline-item mb-3 pb-3 border-bottom">
+            <div class="d-flex align-items-start">
+              <div class="timeline-time text-primary fw-bold me-3" style="min-width: 80px;">13:00</div>
+              <div class="timeline-content flex-grow-1">
+                <div class="fw-bold mb-1">🚪 受付開始</div>
+                <div class="text-muted small">会場にお越しください。着替えが必要な方は更衣室をご利用いただけます。</div>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-item mb-3 pb-3 border-bottom">
+            <div class="d-flex align-items-start">
+              <div class="timeline-time text-primary fw-bold me-3" style="min-width: 80px;">13:30</div>
+              <div class="timeline-content flex-grow-1">
+                <div class="fw-bold mb-1">👋 イベント開始・自己紹介</div>
+                <div class="text-muted small">簡単な自己紹介と当日の流れの説明を行います。</div>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-item mb-3 pb-3 border-bottom">
+            <div class="d-flex align-items-start">
+              <div class="timeline-time text-primary fw-bold me-3" style="min-width: 80px;">14:00</div>
+              <div class="timeline-content flex-grow-1">
+                <div class="fw-bold mb-1">🎉 メインイベント</div>
+                <div class="text-muted small">イベントタイトルの内容を実施します。</div>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-item mb-3 pb-3 border-bottom">
+            <div class="d-flex align-items-start">
+              <div class="timeline-time text-primary fw-bold me-3" style="min-width: 80px;">16:00</div>
+              <div class="timeline-content flex-grow-1">
+                <div class="fw-bold mb-1">☕ 休憩・フリータイム</div>
+                <div class="text-muted small">雑談・飲食など、リラックスして過ごせる時間です。</div>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="d-flex align-items-start">
+              <div class="timeline-time text-primary fw-bold me-3" style="min-width: 80px;">17:00</div>
+              <div class="timeline-content flex-grow-1">
+                <div class="fw-bold mb-1">👋 終了・解散</div>
+                <div class="text-muted small">お疲れ様でした！気をつけてお帰りください。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="alert alert-info mt-3 mb-0">
+          <small>
+            <i class="bi bi-info-circle"></i> タイムラインは目安です。当日の状況により変更になる場合があります。
+          </small>
+        </div>
+      </div>
+    </div>
+
+    <!-- 募集対象・定員 -->
+    <div class="card shadow-sm mb-3">
+      <div class="card-header bg-white py-3">
+        <h2 class="h5 mb-0 fw-bold">
+          <span class="me-2">🧑‍🤝‍🧑</span>募集対象・定員
+        </h2>
+      </div>
+      <div class="card-body">
+        <div class="row mb-2">
+          <div class="col-4 fw-bold text-secondary">対象者</div>
+          <div class="col-8">
+            <span class="badge bg-warning text-dark mb-1">成人のみ</span><br>
+            初めての方も大歓迎です
+          </div>
+        </div>
+        <div class="row mb-2">
+          <div class="col-4 fw-bold text-secondary">定員</div>
+          <div class="col-8">定員なし</div>
+        </div>
+        <div class="row">
+          <div class="col-4 fw-bold text-secondary">申込締切</div>
+          <div class="col-8">2025年11月14日（金）まで</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 参加費・支払い -->
+    <div class="card shadow-sm mb-3">
+      <div class="card-header bg-white py-3">
+        <h2 class="h5 mb-0 fw-bold">
+          <span class="me-2">💰</span>参加費・支払い方法
+        </h2>
+      </div>
+      <div class="card-body">
+        <div class="row mb-2">
+          <div class="col-4 fw-bold text-secondary">参加費</div>
+          <div class="col-8">
+            4,000円（目安・税込）<br>
+            <small class="text-muted">会場代を参加人数で割り勘します。人数が多ければ安くなります。</small>
+          </div>
+        </div>
+        <div class="row mb-2">
+          <div class="col-4 fw-bold text-secondary">支払い方法</div>
+          <div class="col-8">当日、現金手渡し</div>
+        </div>
+        <div class="row mb-2">
+          <div class="col-4 fw-bold text-secondary">キャンセル</div>
+          <div class="col-8">可能です（なるべくお控えください）</div>
+        </div>
+        <div class="row">
+          <div class="col-4 fw-bold text-secondary">途中参加</div>
+          <div class="col-8">OK</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 持ち物・服装 -->
+    <div class="card shadow-sm mb-3">
+      <div class="card-header bg-white py-3">
+        <h2 class="h5 mb-0 fw-bold">
+          <span class="me-2">🎒</span>持ち物・服装
+        </h2>
+      </div>
+      <div class="card-body">
+        <div class="row mb-2">
+          <div class="col-4 fw-bold text-secondary">持ち物</div>
+          <div class="col-8">お飲み物と性欲</div>
+        </div>
+        <div class="row mb-2">
+          <div class="col-4 fw-bold text-secondary">服装</div>
+          <div class="col-8">指定なし（自由）</div>
+        </div>
+        <div class="row mb-2">
+          <div class="col-4 fw-bold text-secondary">飲食物持込</div>
+          <div class="col-8">可能</div>
+        </div>
+        <div class="row">
+          <div class="col-4 fw-bold text-secondary">更衣室</div>
+          <div class="col-8">あり</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 申込方法・問い合わせ -->
+    <div class="card shadow-sm mb-3" id="apply-section">
+      <div class="card-header bg-white py-3">
+        <h2 class="h5 mb-0 fw-bold">
+          <span class="me-2">📧</span>申込方法・問い合わせ
+        </h2>
+      </div>
+      <div class="card-body">
+        <div class="row mb-2">
+          <div class="col-4 fw-bold text-secondary">申込方法</div>
+          <div class="col-8">
+            以下のいずれかの方法でお申し込みください<br>
+            <strong>メール:</strong> ayuhou10@gmail.com<br>
+            <strong>X:</strong> @phimosisayu
+          </div>
+        </div>
+        <div class="row mb-2">
+          <div class="col-4 fw-bold text-secondary">申込手順</div>
+          <div class="col-8">
+            1. 上記連絡先に参加希望の旨をご連絡<br>
+            2. 確認のご返信をお待ちください<br>
+            3. 詳細情報をお送りします
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4 fw-bold text-secondary">緊急連絡先</div>
+          <div class="col-8">当日の緊急連絡も上記と同じ</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 注意事項 -->
+    <div class="card shadow-sm mb-3">
+      <div class="card-header bg-white py-3">
+        <h2 class="h5 mb-0 fw-bold">
+          <span class="me-2">⚠️</span>注意事項
+        </h2>
+      </div>
+      <div class="card-body">
+        <ul class="mb-0">
+          <li class="mb-2">イベントの撮影はNGです。自撮りはOKですが、他の参加者の方が写り込まないようご注意ください。</li>
+          <li class="mb-2">体調不良や持病をお持ちの方は、無理せずご参加ください。</li>
+          <li class="mb-2">参加は自己責任となります。イベント中の事故や怪我について、主催者は責任を負いかねます。</li>
+          <li class="mb-2">他の参加者への配慮をお願いいたします。迷惑行為があった場合は退出いただく場合があります。</li>
+          <li class="mb-0">天候やその他の事情により、イベントが中止または変更になる場合があります。その際は事前にご連絡いたします。</li>
+          <li class="mb-0">募集してるのは、ザーメンをぶっかけてくれる方です。ぶっかけられたい方はごめんなさい。</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 固定フッター -->
+  <div class="fixed-bottom bg-white border-top py-3 shadow">
+    <div class="container">
+      <div class="row g-2">
+        <div class="col-6">
+          <a href="mailto:ayuhou10@gmail.com?subject=イベント参加申込&body=参加を希望します。%0D%0A%0D%0A【お名前】%0D%0A%0D%0A【ご連絡先】%0D%0A" class="btn btn-primary btn-lg w-100">
+            📧 メール
+          </a>
+        </div>
+        <div class="col-6">
+          <a href="https://x.com/phimosisayu" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg w-100">
+            ✉️ X DM
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/common.js"></script>
+</body>
+</html>

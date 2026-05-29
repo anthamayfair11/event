@@ -1,0 +1,164 @@
+{
+  "categories": [
+    {
+      "id": "schedule",
+      "name": "開催・申込について",
+      "icon": "📅",
+      "faqs": [
+        {
+          "id": 1,
+          "question": "いつ開催されますか？",
+          "answer": "2026/2/14(土)13:00-16:00",
+          "defaultOpen": true
+        },
+        {
+          "id": 2,
+          "question": "予約は必要ですか？",
+          "answer": "事前予約制となります。Xまたはメールでお申し込みください。",
+          "defaultOpen": false
+        },
+        {
+          "id": 3,
+          "question": "参加費はかかりますか？",
+          "answer": "会場代を割り勘します。お一人4,000円としていますが、これは目安です。参加人数が多ければ安くなります。",
+          "defaultOpen": false
+        },
+        {
+          "id": 4,
+          "question": "支払い方法は？",
+          "answer": "当日、現金手渡し",
+          "defaultOpen": false
+        },
+        {
+          "id": 5,
+          "question": "キャンセルできますか？",
+          "answer": "なるべくしてほしくないですが、可能です",
+          "defaultOpen": false
+        },
+        {
+          "id": 6,
+          "question": "途中参加できますか？",
+          "answer": "OKです",
+          "defaultOpen": false
+        },
+        {
+          "id": 7,
+          "question": "定員はありますか？",
+          "answer": "ありません",
+          "defaultOpen": false
+        },
+        {
+          "id": 8,
+          "question": "申込締切はいつですか？",
+          "answer": "2026/2/13(金)までお申し込み可能です",
+          "defaultOpen": false
+        }
+      ]
+    },
+    {
+      "id": "items",
+      "name": "当日の持ち物・服装",
+      "icon": "🎒",
+      "faqs": [
+        {
+          "id": 9,
+          "question": "持ち物はありますか？",
+          "answer": "お飲み物と性欲をお持ちください。",
+          "defaultOpen": false
+        },
+        {
+          "id": 10,
+          "question": "服装の指定はありますか？",
+          "answer": "指定なしです",
+          "defaultOpen": false
+        },
+        {
+          "id": 11,
+          "question": "飲食物の持込可能ですか？",
+          "answer": "可能です",
+          "defaultOpen": false
+        },
+        {
+          "id": 12,
+          "question": "更衣室はありますか？",
+          "answer": "あります",
+          "defaultOpen": false
+        }
+      ]
+    },
+    {
+      "id": "target",
+      "name": "対象・内容について",
+      "icon": "🧑‍🤝‍🧑",
+      "faqs": [
+        {
+          "id": 13,
+          "question": "初めてでも大丈夫ですか？",
+          "answer": "もちろん大丈夫です。",
+          "defaultOpen": false
+        },
+        {
+          "id": 14,
+          "question": "年齢制限はありますか？",
+          "answer": "成人のみ",
+          "defaultOpen": false
+        },
+        {
+          "id": 15,
+          "question": "どんな内容ですか？",
+          "answer": "イベントのタイトルをご覧ください",
+          "defaultOpen": false
+        },
+        {
+          "id": 16,
+          "question": "所要時間はどのくらいですか？",
+          "answer": "13:00-16:00です",
+          "defaultOpen": false
+        },
+        {
+          "id": 22,
+          "question": "わたしにもぶっかけてもらえますか？",
+          "answer": "いいえ。コンセプトを理解してください",
+          "defaultOpen": false
+        }
+      ]
+    },
+    {
+      "id": "access",
+      "name": "会場アクセス・その他",
+      "icon": "🚗",
+      "faqs": [
+        {
+          "id": 17,
+          "question": "会場への行き方は？",
+          "answer": "新宿駅もしくは新宿三丁目駅から徒歩",
+          "defaultOpen": false
+        },
+        {
+          "id": 18,
+          "question": "駐車場はありますか？",
+          "answer": "ありません。近くのコインパークをご利用ください",
+          "defaultOpen": false
+        },
+        {
+          "id": 19,
+          "question": "最寄り駅からの距離は？",
+          "answer": "徒歩数分くらいです",
+          "defaultOpen": false
+        },
+        {
+          "id": 20,
+          "question": "緊急連絡先はありますか？",
+          "answer": "メール:ayuhou10@gmail.com、X:@phimosisayu",
+          "defaultOpen": false
+        },
+        {
+          "id": 21,
+          "question": "問い合わせ先はどこですか？",
+          "answer": "メール:ayuhou10@gmail.com、X:@phimosisayu",
+          "defaultOpen": false
+        }
+      ]
+    }
+  ]
+}

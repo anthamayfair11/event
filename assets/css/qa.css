@@ -1,0 +1,21 @@
+/* QAページ固有のスタイル */
+
+.search-box {
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+.tab-icon {
+  margin-right: 0.5rem;
+}
+
+.no-results {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #6c757d;
+}
+
+.search-highlight {
+  background-color: #fff3cd;
+  padding: 0 0.2rem;
+}

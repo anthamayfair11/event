@@ -1,0 +1,55 @@
+/* カウントダウンタイマー */
+.countdown-timer {
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.countdown-item {
+  text-align: center;
+  min-width: 60px;
+}
+
+.countdown-number {
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.2;
+}
+
+.countdown-label {
+  font-size: 0.75rem;
+  color: #6c757d;
+  font-weight: 500;
+  margin-top: 0.25rem;
+}
+
+/* 参加申込状況 */
+.participation-status {
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.participation-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 576px) {
+  .countdown-number {
+    font-size: 1.75rem;
+  }
+  .countdown-item {
+    min-width: 50px;
+  }
+  .participation-number {
+    font-size: 2rem;
+  }
+}
